@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class ServiceTask <T extends Tasks> {
-    Map<Integer, Tasks> tasks = new HashMap<>();
+public class ServiceTask<T extends Task> {
+    Map<Integer, Task> tasks = new HashMap<>();
 
 
-    public void addTask(Tasks task) {
+    public void addTask(Task task) {
         tasks.put(task.getId(), task);
     }
 
@@ -17,26 +17,25 @@ public class ServiceTask <T extends Tasks> {
     }
 
     public void removeTask(String taskName) {
-        for (Tasks value : tasks.values()) {
+        for (Task value : tasks.values()) {
             int i = 0;
             if (value.getName().equals(taskName)) {
                 i = value.getId();
+
             }
             tasks.remove(i);
+            break;
         }
     }
 
-    public Collection<Tasks> getTasksForDay(LocalDate localDate) {
-        List<Tasks> tasksForDay = new ArrayList<>();
-        for (Tasks task : tasks.values()) {
+    public Collection<Task> getTasksForDay(LocalDate localDate) {
+        List<Task> tasksForDay = new ArrayList<>();
+        for (Task task : tasks.values()) {
             if (task.appearsIn(localDate)) {
                 tasksForDay.add(task);
             }
         }
         return tasksForDay;
     }
-
-
-
-    }
+}
 

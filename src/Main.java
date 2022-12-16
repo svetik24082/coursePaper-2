@@ -14,7 +14,7 @@ import static coursePaper.TaskType.PERSONAL;
 public class Main {
     private final static DateTimeFormatter TASK_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
     private final static DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-    private final static ServiceTask<Tasks> serviceTask = new ServiceTask<>();
+    private final static ServiceTask<Task> serviceTask = new ServiceTask<>();
 
 
     public static void main(String[] args) {
@@ -22,19 +22,14 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
-
                 printMenu();
                 System.out.print("Выберите пункт меню: ");
-
                 if (scanner.hasNextInt()) {
                     int menu = scanner.nextInt();
                     scanner.reset();
                     switch (menu) {
                         case 1:
-
                             inputTask(scanner);
-
-
                             break;
                         case 2:
                             // todo: обрабатываем пункт меню 2

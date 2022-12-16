@@ -3,18 +3,18 @@ package coursePaper;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Tasks {
-    private  String name;  // название задачи
-    private  String description;  // описание
+public abstract class Task {
+    private String name;  // название задачи
+    private String description;  // описание
     private final int id;
-    private  static int counter = 1;
+    private static int counter = 1;
     protected TaskType type;   // тип задачи
     protected LocalDateTime date;  //дата  и время
 
 
     protected RepeatType repeatType;  // тип повторяемости
 
-    public Tasks(String name, String description, TaskType type, LocalDateTime date, RepeatType repeatType) {
+    public Task(String name, String description, TaskType type, LocalDateTime date, RepeatType repeatType) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -62,11 +62,11 @@ public class Tasks {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
-    public boolean appearsIn (LocalDate date){
-        return false;
+
+    public abstract boolean  appearsIn(LocalDate date);
 
 
-}
+
 
     @Override
     public String toString() {
@@ -79,10 +79,4 @@ public class Tasks {
                 ;
     }
 }
-
-
-
-
-
-
 
